@@ -8,9 +8,8 @@ app
   .get("/translate", (c) => c.text("Please use POST method :)"))
   .post("/translate", async (c) => {
     const params = await c.req.json().catch(() => ({}));
-    const result = await query(params, {
-      proxyEndpoint: "https://ideepl.vercel.app/jsonrpc",
-    });
+    // 修改后的代码
+    const result = await query(params);
     return c.json(result, result.code);
   });
 
